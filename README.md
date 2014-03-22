@@ -60,5 +60,5 @@ Coming soon!  Outline of this section:
 
 To demonstrate writing to pixels in C++, let's create a function that draws an RGB flag onto a surface (assumed to be in the format 32-bit RGBA), creating something like:
 
-<img style="max-width:100%;" src="https://raw.github.com/breakthrough/pygame-ctypes-tutorial/master/images/rgbfill.png" alt="https://raw.github.com/breakthrough/pygame-ctypes-tutorial/master/images/rgbfill.png" />
+<img style="max-width:100%;" src="https://raw.github.com/breakthrough/pygame-ctypes-tutorial/master/images/fillrgb.png" alt="https://raw.github.com/breakthrough/pygame-ctypes-tutorial/master/images/fillrgb.png" />
  
