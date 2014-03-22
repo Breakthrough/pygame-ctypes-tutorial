@@ -6,18 +6,19 @@ By: [Brandon Castellano](http://www.bcastell.com)
 
 With ctypes, you can mix C/C++ code with Python to gain the speed of compiled code with the awesomeness of Python.  How much speed are we talking about?  When compiled with optimizations enabled, the compiled functions provide a significant performance gain - sometimes exceeds even native Pygame methods, such as filling a surface:
 
-    ---------------------------------------------------
-    | Surface Fill |     Time to Fill Surface (ms)    |
-    |    Method    | 1280x720 | 1920x1080 | 2560x1600 |
-    ---------------------------------------------------
-    |   (Python)   |          |           |           |
-    | surfarray[:] |          |           |           |
-    | surface.fill  |          |           |           |
-    | surface.blit |          |           |           |
-    ---------------------------------------------------
-    |    (C++)     |          |           |           |
-    | for-loop     |          |           |           |
-    ---------------------------------------------------
+    ------------------------------------------------------
+    |  Surface Fill  |      Time to Fill Surface (ms)    |
+    |     Method     |  1280x720 | 1920x1080 | 2560x1600 |
+    ------------------------------------------------------
+    |  *Python*:     |           |           |           |
+    |  surfarray[:]  |           |           |           |
+    |  surface.fill   |           |           |           |
+    |  surface.blit  |           |           |           |
+    ------------------------------------------------------
+    |  *C++*:        |           |           |           |
+    |  for-loop      |           |           |           |
+    |  memset        |           |           |           |
+    ------------------------------------------------------
     
     (tested w/ i7 2600k @ 4.0 GHz, test code can be found in `benchmarks/` directory)
     
