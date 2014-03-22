@@ -70,7 +70,7 @@ For simplicity, we assume the surface format is 32-bit ARGB (although it is easy
 
 ```C+
 extern "C"
-void fill_rgb_flag(unsigned char* surf_data, int surf_w, int surf_h, int surf_pitch)
+void fill_rgb(unsigned char* surf_data, int surf_w, int surf_h, int surf_pitch)
 {
     if (!surf_data) return;
 
@@ -137,7 +137,13 @@ Once the .dll file is compiled (either in the `Debug/` or `Release/` folders), p
 import ctypes
 libsurfmanip = ctypes.CDLL('/full/path/to/shared/library/libsurfmanip.so')
 
-#numpy.ctypeslib.ndpointer(ctypes.c_int)
+cpp_fill_rgb = libsurfmanip.fill_rgb
+cpp_fill_rgb.restype = None
+cpp_fill_rgb.argtypes = [ numpy.ctypeslib.ndpointer(ctypes.c_int),  # ptr to surface data
+                     ctypes.c_int,      # surface width
+                     ctypes.c_int,      # surface height
+                     ctypes.c_int ]     # surface pitch (bytes/row)
+
 ```
 
 
