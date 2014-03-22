@@ -12,7 +12,7 @@ With ctypes, you can mix C/C++ code with Python to gain the speed of compiled co
     ------------------------------------------------------
     |  *Python*:     |           |           |           |
     |  surfarray[:]  |           |           |           |
-    |  surface.fill   |           |           |           |
+    |  surface.fill  |           |           |           |
     |  surface.blit  |           |           |           |
     ------------------------------------------------------
     |  *C++*:        |           |           |           |
@@ -53,4 +53,12 @@ Coming soon!  Outline of this section:
  - Create Pygame surface and Access as Numpy Array through `surfarray`
  - Import Shared Library via ctypes
  - Display Updated Surface to Screen (or do other work w/ surface)
+
+>
+
+### Writing a C++ Function to Modify a Surface
+
+To demonstrate writing to pixels in C++, let's create a function that draws an RGB flag onto a surface (assumed to be in the format 32-bit RGBA), creating something like:
+
+<img style="max-width:100%;" src="https://raw.github.com/breakthrough/pygame-ctypes-tutorial/master/images/rgbfill.png" alt="https://raw.github.com/breakthrough/pygame-ctypes-tutorial/master/images/rgbfill.png" />
  
