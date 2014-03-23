@@ -42,6 +42,7 @@ File List
 
  - `README.md` : Quickstart covering process for accessing Pygame surface data with C++ code.
  - `TUTORIAL.md` : Step-by-step tutorial of the process, including a sample Pygame program.
+ - `LICENSE` : File detailing terms all files in this repository are released under (public domain).
  - `example/` : Sample Python/C++ code for this tutorial; includes a Makefile for *NIX people that have `g++` and a Visual Studio project for Windows users.
  - `benchmarks/` : Python program and C++ shared library comparing the performance of various surface access methods/operations in both languages.
   
@@ -51,6 +52,8 @@ File List
 Quickstart
 ----------
 
+** TODO ** : This is the complete tutorial as-is; should be moved to `TUTORIAL.md` eventually and made significantly shorter (i.e. ~1-2 pages) as a general overview.
+
 There are four main steps we need to complete:
 
  1. Write a C++ function to modify a Pygame surface in-place
@@ -59,7 +62,6 @@ There are four main steps we need to complete:
     2.2. Compiling on Windows (Visual Studio)
  3. Import the shared library via Python's ctypes
  4. Access the Pygame surface as a Numpy array, obtain pointer to pixel data
-
 
 ### 1. Writing a C++ Function to Modify a Surface
 
@@ -92,7 +94,7 @@ void fill_rgb(unsigned char* surf_data, int surf_w, int surf_h, int surf_pitch)
 }
 ```
 
-Note that we have to include `extern "C"` in the function declaration so that the function name is exported properly in the shared library.  **Windows users** must also add `__declspec(dllexport)` as well (i.e. `extern "C" __declspec(dllexport) int my_function(...)`) for the function names to show up after importing the `.dll` with ctypes.
+Note that we have to include `extern "C"` in the function declaration so that the function name is exported properly in the shared library.  **Windows users** must also add `__declspec(dllexport)` just after `extern "C"` for the function names to show up properly after loading the `.dll` with ctypes.
 
 Since we are accessing the pixels as they sit in memory, one must ensure that the surface type is known and being [accessed correctly](http://en.wikipedia.org/wiki/Endianness).  That being said, that the above function can easily be adapted for other surface types (the [`get_masks()`](http://www.pygame.org/docs/ref/surface.html#pygame.Surface.get_pitch) and [`get_pitch()`](http://www.pygame.org/docs/ref/surface.html#pygame.Surface.get_pitch) methods are useful for correctly addressing surfaces in-memory), the same way as would be done for a regular SDL surface in C/C++.
 
