@@ -16,6 +16,8 @@ __declspec(dllexport)
 void fill_surface(unsigned char* surf_data, int surf_width, int surf_height,
     int surf_stride, unsigned char rval, unsigned char gval, unsigned char bval)
 {
+    if (!surf_data) return;
+
     unsigned char* pixel_ptr;   // Used to access the surface below.
 
     // Set the square's size to half that of the surface's smaller dimension.
