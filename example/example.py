@@ -17,6 +17,7 @@ import sys
 import time
 import os
 
+
 def load_shared_lib(libname):
     # We assume the shared library is present in the same directory as this script.
     libpath = os.path.dirname(os.path.realpath(__file__))
@@ -36,17 +37,15 @@ def load_shared_lib(libname):
     return ctypes.CDLL(libpath)
 
 
-
 def main():
-
 
     screen = pygame.display.set_mode((720, 480))
 
     lib_surfmanip = load_shared_lib("surfmanip")
-
     if not lib_surfmanip:
         print "Fatal error - could not load surfmanip library! Exiting..."
         return
+
     # Get a handle to the draw_square(...) function in our shared library.
     draw_func = lib_surfmanip.draw_square
     draw_func.restype = None     # Set return type (None for void, defaults to ctypes.c_int).
@@ -59,21 +58,16 @@ def main():
                screen.get_height(), screen.get_pitch(), 0xFF0000 )
 
     run_main_loop = True
-
     while run_main_loop:
-
         # Flip the screen so the window is drawn/updated.
         pygame.display.flip()
-
         # Handle keyboard input (quit on escape or Q).
         events = pygame.event.get()
         for event in events:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_q or event.key == pygame.K_ESC:
                     run_main_loop = False
-
-        time.sleep(0.1)
-
+        time.sleep(0.1)   # Idle for a bit so we don't consume 100% CPU.
 
     print "Done."
 
